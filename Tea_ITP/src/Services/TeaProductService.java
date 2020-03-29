@@ -25,13 +25,17 @@ public interface TeaProductService {
 
 	boolean updateDelivery(TeaProduct b1) throws SQLException ;
 	
-	TeaProduct SearchBooks(String searchBooks) throws Exception;
+	TeaProduct SearcTeas(String searchTeas) throws Exception;
 
 	boolean addNewTea(TeaProduct tea)throws SQLException;
 
 	ArrayList<TeaProduct> getAllTeaProduts() throws SQLException;
 
 	boolean addNewTeaProduct(TeaProduct tea) throws SQLException;
+
+	public TeaProduct SearchTeas(String name);
+
+	
 
 	
 
