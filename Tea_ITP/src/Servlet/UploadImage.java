@@ -6,12 +6,15 @@ import java.sql.*;
 import java.util.*;
 import java.text.*;
 import java.util.regex.*;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.fileupload.*;
-
 import javax.servlet.*;
 import javax.servlet.http.*;
+
+import org.apache.tomcat.util.http.fileupload.FileItem;
+import org.apache.tomcat.util.http.fileupload.FileItemFactory;
+import org.apache.tomcat.util.http.fileupload.FileUploadException;
+import org.apache.tomcat.util.http.fileupload.RequestContext;
+import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
+import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
 public class UploadImage extends HttpServlet{
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -26,7 +29,7 @@ public class UploadImage extends HttpServlet{
 			List items = null;
 
 			try {
-				items = upload.parseRequest(request);
+				items = upload.parseRequest((RequestContext) request);
 				System.out.println("items: "+items);
 			} catch (FileUploadException e) {
 				e.printStackTrace();
